@@ -158,10 +158,9 @@ CACHES = {
     }
 }
 
-REDIS_TIMEOUT=7*24*60*60
-CUBES_REDIS_TIMEOUT=60*60
-NEVER_REDIS_TIMEOUT=365*24*60*60
-
+REDIS_TIMEOUT = 7 * 24 * 60 * 60
+CUBES_REDIS_TIMEOUT = 60 * 60
+NEVER_REDIS_TIMEOUT = 365 * 24 * 60 * 60
 
 LANGUAGE_CODE = 'zh-hans'
 
@@ -181,8 +180,6 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # 指定根目录
 
-# FILE_URL = 'pdf/%Y%m/'
-
-FILE_URL = 'PDF/'
+FILE_URL = 'pdf/'
 
 FILE_ROOT = os.path.join(BASE_DIR, FILE_URL)
