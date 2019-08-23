@@ -8,7 +8,7 @@ class PDFAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 
-class PDFuploadAdmin(admin.ModelAdmin):
+class PDFuploadAdmin():
     """PDF上传"""
     def save_model(self, request, obj, form, change):
         obj.save()
