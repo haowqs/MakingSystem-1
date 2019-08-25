@@ -13,7 +13,7 @@ from makingsystem.settings import config, MEDIA_ROOT
 from django.db import connection
 import logging
 from utils.log import log
-
+from category.models import TestDetails, Banner
 from django.contrib import admin
 
 log.initLogConf()
@@ -63,6 +63,14 @@ class Xfer(object):
             if fileN.endswith('/'):
                 continue
             # name = fileN.encode('cp437').decode('gbk')
+            title_name = fileN.split('+')[0]
+            test_obj = TestDetails.objects.filter(title=title_name)
+            if test_obj:
+                test_obj.test_number = int(test_obj.test_number) + 1
+            else:
+                banner_obj = Banner.objects.filter(title=title_name)
+                if banner_obj:
+                    banner_obj.test_number = int(banner_obj.test_number) + 1
             name = fileN
             print('###name:', name)
             mobile = re.compile('1[345678]\d{9}')
@@ -108,7 +116,6 @@ class Xfer(object):
 #         # xfer.upload(str(obj.image), )
 #         # xfer.clearAliyun()
 #         print(obj.__dir__())
-
 
 
 if __name__ == '__main__':
